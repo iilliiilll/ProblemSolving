@@ -4,15 +4,15 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int a, b, c, same;
+        int a, b, c, same, price;
         a = sc.nextInt();
         b = sc.nextInt();
         c = sc.nextInt();
 
         if (a == b && b == c) {
-            System.out.println(10000 + a * 1000);
+            price = 10000 + a * 1000;
         } else if (a != b && b != c && c != a) {
-            System.out.println(Math.max(Math.max(a, b), c) * 100);
+            price = Math.max(Math.max(a, b), c) * 100;
         } else {
             if (a == b) {
                 same = a;
@@ -21,8 +21,10 @@ public class Main {
             } else {
                 same = c;
             }
-            System.out.println(1000 + same * 100);
+            price = 1000 + same * 100;
         }
+
+        System.out.println(price);
 
     }
 }
