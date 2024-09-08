@@ -10,18 +10,17 @@ public class Main {
 
         if (m >= 45) {
             m -= 45;
-            System.out.println(h + " " + m);
         } else {
             if (h == 0) {
                 h = 23;
                 m += 15;
-                System.out.println(h + " " + m);
             } else {
                 h -= 1;
                 m += 15;
-                System.out.println(h + " " + m);
             }
         }
+
+        System.out.println(h + " " + m);
 
     }
 }
