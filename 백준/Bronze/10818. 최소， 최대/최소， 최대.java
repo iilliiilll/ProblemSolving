@@ -1,31 +1,35 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = sc.nextInt();
+        int n = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
         int[] arr = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt();
-        }
-
         int min = 9999999;
         int max = -9999999;
 
-        for (int i : arr) {
-            if (min > i) {
-                min = i;
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+
+            if (min > arr[i]) {
+                min = arr[i];
             }
-            if (max < i) {
-                max = i;
+            if (max < arr[i]) {
+                max = arr[i];
             }
         }
 
-        System.out.println(min + " " + max);
+        bw.write(min + " " + max);
+
+        br.close();
+        bw.flush();
+        bw.close();
 
     }
 }
