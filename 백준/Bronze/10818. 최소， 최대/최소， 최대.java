@@ -13,9 +13,19 @@ public class Main {
             arr[i] = sc.nextInt();
         }
 
-        Arrays.sort(arr);
+        int min = 9999999;
+        int max = -9999999;
 
-        System.out.println(arr[0] + " " + arr[arr.length - 1]);
+        for (int i : arr) {
+            if (min > i) {
+                min = i;
+            }
+            if (max < i) {
+                max = i;
+            }
+        }
+
+        System.out.println(min + " " + max);
 
     }
 }
