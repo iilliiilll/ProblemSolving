@@ -17,12 +17,8 @@ public class Main {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
 
-            if (min > arr[i]) {
-                min = arr[i];
-            }
-            if (max < arr[i]) {
-                max = arr[i];
-            }
+            min = Math.min(min, arr[i]);
+            max = Math.max(max, arr[i]);
         }
 
         bw.write(min + " " + max);
