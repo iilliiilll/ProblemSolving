@@ -1,18 +1,24 @@
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int a, b;
+        String str;
 
-        while (sc.hasNextInt()) {
-            a = sc.nextInt();
-            b = sc.nextInt();
+        while ((str = br.readLine()) != null) {
+            int a = Integer.parseInt(str.split(" ")[0]);
+            int b = Integer.parseInt(str.split(" ")[1]);
 
-            System.out.println(a + b);
+            bw.write(a + b + "\n");
         }
+
+        br.close();
+
+        bw.flush();
+        bw.close();
 
     }
 }
