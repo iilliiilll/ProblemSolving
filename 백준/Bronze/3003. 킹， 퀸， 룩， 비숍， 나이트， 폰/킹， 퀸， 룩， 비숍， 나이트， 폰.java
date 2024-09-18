@@ -10,14 +10,11 @@ public class Main {
         String str = br.readLine();
         StringTokenizer st = new StringTokenizer(str, " ");
 
-        int[] arr1 = new int[6];
-        int[] arr2 = {1, 1, 2, 2, 2, 8};
-        int[] arr3 = new int[6];
+        int[] arr = {1, 1, 2, 2, 2, 8};
 
-        for (int i = 0; i < arr1.length; i++) {
-            arr1[i] = Integer.parseInt(st.nextToken());
-            arr3[i] = arr2[i] - arr1[i];
-            System.out.print(arr3[i] + " ");
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] -= Integer.parseInt(st.nextToken());
+            System.out.print(arr[i] + " ");
         }
 
         br.close();
