@@ -17,20 +17,13 @@ public class Main {
 
             for (int j = 0; j < 10; j++) {
                 for (int k = 0; k < 10; k++) {
-                    if ((x + j) < 100 && (y + k) < 100) {
+                    if (arr[x + j][y + k] == 0) {
                         arr[x + j][y + k] = 1;
+                        count++;
                     }
                 }
             }
 
-        }
-
-        for (int[] n : arr) {
-            for (int m : n) {
-                if (m == 1) {
-                    count++;
-                }
-            }
         }
 
         System.out.println(count);
