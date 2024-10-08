@@ -1,10 +1,7 @@
-import java.io.*;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt(); // n의 범위 : 1 <= n <= 10,000
