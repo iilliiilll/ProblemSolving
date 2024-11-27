@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
         // 출입 기록 수 (2 <= n <= 10^6)
         int n = Integer.parseInt(br.readLine());
@@ -23,18 +24,21 @@ public class Main {
 
             if (list.equals("enter")) {
                 nameSet.add(name);
-            } else if(list.equals("leave")){
+            } else if (list.equals("leave")) {
                 nameSet.remove(name);
             }
-
         }
 
+        // 배열 변환 후 정렬
         Object[] str = nameSet.toArray();
         Arrays.sort(str);
 
+        // 역순 출력
         for (int i = str.length - 1; i >= 0; i--) {
-            System.out.println(str[i]);
+            sb.append(str[i]).append('\n');
         }
+
+        System.out.println(sb.toString().trim());
 
         br.close();
 
