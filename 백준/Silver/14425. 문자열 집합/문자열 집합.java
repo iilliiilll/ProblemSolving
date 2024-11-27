@@ -13,18 +13,18 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
-        // HashSet 사용
-        HashSet<String> set1 = new HashSet<>();
+        // HashSet에 문자열 추가
+        HashSet<String> set = new HashSet<>();
 
-        // 문자열 입력받기
         for (int i = 0; i < n; i++) {
-            set1.add(br.readLine());
+            set.add(br.readLine());
         }
 
         // 포함 개수 카운트
         int cnt = 0;
+
         for (int i = 0; i < m; i++) {
-            if (set1.contains(br.readLine())) {
+            if (set.contains(br.readLine())) {
                 cnt++;
             }
         }
