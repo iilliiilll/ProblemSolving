@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
 
         // 테스트 케이스의 개수
         int t = Integer.parseInt(br.readLine());
@@ -18,11 +19,13 @@ public class Main {
 
             for (int j = Math.min(a, b); j > 0; j--) {
                 if (a % j == 0 && b % j == 0) {
-                    System.out.println(a * b / j);
+                    sb.append(a * b / j).append("\n");
                     break;
                 }
             }
         }
+
+        System.out.println(sb);
 
         br.close();
 
