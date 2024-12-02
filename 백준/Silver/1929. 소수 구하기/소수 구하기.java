@@ -14,13 +14,21 @@ public class Main {
         int m = Integer.parseInt(st.nextToken());
         int n = Integer.parseInt(st.nextToken());
 
+        // m이 2보다 작은 경우
+        if (m <= 2) {
+            sb.append(2).append('\n');
+        }
+
+        // 홀수로 변경
+        m = m % 2 == 0 ? m + 1 : m;
+
         // 소수 구하기
         while (m <= n) {
             if (isPrime(m)) {
                 sb.append(m).append('\n');
             }
 
-            m++;
+            m += 2;
         }
 
         System.out.println(sb);
