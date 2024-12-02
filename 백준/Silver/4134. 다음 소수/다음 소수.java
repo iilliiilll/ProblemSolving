@@ -14,23 +14,14 @@ public class Main {
         for (int i = 0; i < t; i++) {
             long n = Long.parseLong(br.readLine());
 
-            if (n <= 2) {
-                sb.append(2).append('\n');
-            } else if (n == 3) {
-                sb.append(3).append('\n');
-            } else {
-                long temp = n % 2 == 0 ? n + 1 : n;
-
-                while (true) {
-                    if (isPrime(temp)) {
-                        sb.append(temp).append("\n");
-                        break;
-                    }
-
-                    temp += 2;
+            while (true) {
+                if (isPrime(n)) {
+                    sb.append(n).append("\n");
+                    break;
                 }
-            }
 
+                n++;
+            }
         }
 
         System.out.println(sb);
@@ -38,9 +29,17 @@ public class Main {
         br.close();
     }
 
-    static boolean isPrime(long temp) {
-        for (int i = 2; i <= Math.sqrt(temp); i++) {
-            if (temp % i == 0) {
+    static boolean isPrime(long n) {
+        if (n < 2) {
+            return false;
+        } else if (n == 2 || n == 3) {
+            return true;
+        } else if (n % 2 == 0) {
+            return false;
+        }
+
+        for (long i = 3; i * i <= n; i += 2) {
+            if (n % i == 0) {
                 return false;
             }
         }
