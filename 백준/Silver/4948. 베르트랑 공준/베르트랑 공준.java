@@ -7,43 +7,38 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
 
-        // n 입력 (1 <= n <= 123,456)
+        // 1 <= n <= 123,456
         int n;
-        int result;
+        int max = 123456;
+        boolean[] prime = new boolean[2 * max + 1];
+        getPrime(prime);
 
         while ((n = Integer.parseInt(br.readLine())) != 0) {
-            result = 0;
-
+            int cnt = 0;
             for (int i = n + 1; i <= 2 * n; i++) {
-                if (isPrime(i)) {
-                    result++;
+                if (prime[i]) {
+                    cnt++;
                 }
             }
-
-            sb.append(result).append('\n');
+            sb.append(cnt).append('\n');
         }
 
         System.out.println(sb);
-
-        br.close();
     }
 
-    // 소수 판단
-    static boolean isPrime(int n) {
-        if (n == 1) {
-            return false;
-        } else if (n == 2 || n == 3) {
-            return true;
-        } else if (n % 2 == 0) {
-            return false;
+    // 에라토스테네스의 체
+    static void getPrime(boolean[] prime) {
+        // 초기화
+        for (int i = 2; i < prime.length; i++) {
+            prime[i] = true;
         }
 
-        for (int i = 3; i * i <= n; i += 2) {
-            if (n % i == 0) {
-                return false;
+        // 소수가 아니면 false
+        for (int i = 2; i * i < prime.length; i++) {
+            if (prime[i]) {
+                for (int j = i * i; j < prime.length; j += i)
+                    prime[j] = false;
             }
         }
-
-        return true;
     }
 }
