@@ -32,19 +32,21 @@ public class Main {
                     stack.push(x);
                     break;
                 case 2:
-                    System.out.println(stack.empty() ? -1 : stack.pop());
+                    sb.append(stack.empty() ? -1 : stack.pop()).append('\n');
                     break;
                 case 3:
-                    System.out.println(stack.size());
+                    sb.append(stack.size()).append('\n');
                     break;
                 case 4:
-                    System.out.println(stack.empty() ? 1 : 0);
+                    sb.append(stack.empty() ? 1 : 0).append('\n');
                     break;
                 case 5:
-                    System.out.println(stack.empty() ? -1 : stack.peek());
+                    sb.append(stack.empty() ? -1 : stack.peek()).append('\n');
                     break;
             }
         }
+
+        System.out.println(sb);
 
         br.close();
     }
