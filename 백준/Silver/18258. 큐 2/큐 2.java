@@ -13,43 +13,33 @@ public class Main {
         Queue<Integer> q = new LinkedList<>();
 
         int n = Integer.parseInt(br.readLine());
+        int last = -1; // 마지막 push 값 저장
 
-        int last = 999;
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
-
             String order = st.nextToken();
 
-            if (order.equals("push")) {
-                int x = Integer.parseInt(st.nextToken());
-
-                q.add(x);
-
-                last = x;
-            } else if (order.equals("pop")) {
-                if (q.isEmpty()) {
-                    sb.append(-1).append('\n');
-                } else {
-                    sb.append(q.poll()).append('\n');
-                }
-            } else if (order.equals("size")) {
-                sb.append(q.size()).append('\n');
-            } else if (order.equals("empty")) {
-                sb.append(q.isEmpty() ? 1 : 0).append('\n');
-            } else if (order.equals("front")) {
-                if (q.isEmpty()) {
-                    sb.append(-1).append('\n');
-                } else {
-                    sb.append(q.peek()).append('\n');
-                }
-            } else if (order.equals("back")) {
-                if (q.isEmpty()) {
-                    sb.append(-1).append('\n');
-                } else {
-                    sb.append(last).append('\n');
-                }
+            switch (order) {
+                case "push":
+                    last = Integer.parseInt(st.nextToken());
+                    q.add(last);
+                    break;
+                case "pop":
+                    sb.append(q.isEmpty() ? -1 : q.poll()).append('\n');
+                    break;
+                case "size":
+                    sb.append(q.size()).append('\n');
+                    break;
+                case "empty":
+                    sb.append(q.isEmpty() ? 1 : 0).append('\n');
+                    break;
+                case "front":
+                    sb.append(q.isEmpty() ? -1 : q.peek()).append('\n');
+                    break;
+                case "back":
+                    sb.append(q.isEmpty() ? -1 : last).append('\n');
+                    break;
             }
-
         }
 
         System.out.println(sb);
