@@ -20,28 +20,26 @@ public class Main {
             dq.addLast(b);
         }
 
-        Balloon curBal = dq.pollFirst();
-        int curNum = curBal.number;
-        int curVal = curBal.value;
+        // 1번 풍선부터 시작
+        int curVal = 1;
 
-        sb.append(curNum).append(" ");
-
+        // 덱이 빌 때까지
         while (!dq.isEmpty()) {
             if (curVal > 0) {
                 for (int i = 0; i < curVal - 1; i++) {
                     dq.addLast(dq.pollFirst());
                 }
             } else {
-                for (int i = 0; i < (-curVal); i++) {
+                for (int i = 0; i < -curVal; i++) {
                     dq.addFirst(dq.pollLast());
                 }
             }
 
-            Balloon next = dq.pollFirst();
-            curVal = next.value;
-            sb.append(next.number).append(" ");
+            // 맨 앞 풍선 제거
+            Balloon curBal = dq.pollFirst();
+            curVal = curBal.value;
+            sb.append(curBal.number).append(" ");
         }
-
 
         System.out.println(sb);
     }
