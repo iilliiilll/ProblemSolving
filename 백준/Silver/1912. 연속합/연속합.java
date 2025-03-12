@@ -4,8 +4,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 class Main {
-    static int MAX = Integer.MIN_VALUE;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
@@ -22,6 +20,8 @@ class Main {
 
         // 최대합 구하기
         int num = dp[0];
+        int MAX = dp[0];
+        
         for (int i = 1; i < n; i++) {
             num = Math.max(dp[i], dp[i] + num);
 
@@ -30,6 +30,6 @@ class Main {
             }
         }
 
-        System.out.println(Math.max(MAX, dp[0]));
+        System.out.println(MAX);
     }
 }
