@@ -13,24 +13,20 @@ class Main {
         int k = Integer.parseInt(st.nextToken());
 
         int[] arr = new int[n];
-
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        int max = Integer.MIN_VALUE;
+        int max = 0;
+        for (int i = 0; i < k; i++) {
+            max += arr[i];
+        }
 
-        for (int i = 0; i < n - k + 1; i++) {
-            int sum = 0;
-
-            for (int j = i; j < i + k; j++) {
-                sum += arr[j];
-            }
-
-            if (max < sum) {
-                max = sum;
-            }
+        int temp = max;
+        for (int i = 0; i < n - k; i++) {
+            temp += arr[i + k] - arr[i];
+            max = Math.max(max, temp);
         }
 
         System.out.println(max);
