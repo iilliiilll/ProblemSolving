@@ -4,38 +4,34 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 class Main {
-    static StringBuilder sb = new StringBuilder();
-    static char[] ch_arr;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
-        ch_arr = br.readLine().toCharArray();
+        String str = br.readLine();
+        int[][] sum = new int[26][str.length() + 1];
+
+        for (int i = 1; i <= str.length(); i++) {
+            int searchCh = str.charAt(i - 1) - 'a';
+
+            for (int j = 0; j < 26; j++) {
+                sum[j][i] = (j == searchCh ? sum[j][i - 1] + 1 : sum[j][i - 1]);
+            }
+        }
+
         int q = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < q; i++) {
             st = new StringTokenizer(br.readLine());
 
-            char ch = st.nextToken().charAt(0);
-            int l = Integer.parseInt(st.nextToken());
-            int r = Integer.parseInt(st.nextToken());
+            int ch = st.nextToken().charAt(0) - 'a';
+            int start = Integer.parseInt(st.nextToken()) + 1;
+            int end = Integer.parseInt(st.nextToken()) + 1;
 
-            countChar(ch, l, r);
+            sb.append(sum[ch][end] - sum[ch][start - 1]).append("\n");
         }
 
         System.out.println(sb);
-    }
-
-    public static void countChar(char ch, int l, int r) {
-        int count = 0;
-
-        for (int i = l; i <= r; i++) {
-            if (ch_arr[i] == ch) {
-                count += 1;
-            }
-        }
-
-        sb.append(count).append('\n');
     }
 }
