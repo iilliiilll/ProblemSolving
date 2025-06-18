@@ -27,8 +27,8 @@ class Main {
         }
 
         // 최소 비용 구하기
-        int minOil = oil[0];
-        double price = minOil * road[0];
+        long minOil = oil[0];
+        long price = minOil * road[0];
 
         for (int i = 1; i < n - 1; i++) {
             // 더 싼 기름
@@ -39,7 +39,7 @@ class Main {
             price += minOil * road[i];
         }
 
-        System.out.println((int) price);
+        System.out.println(price);
 
     }
 }
