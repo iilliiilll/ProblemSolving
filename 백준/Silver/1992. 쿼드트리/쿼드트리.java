@@ -31,11 +31,7 @@ class Main {
     static public void divide(int x, int y, int size) {
 
         if (isEqual(x, y, size)) {
-            if (video[x][y] == '1') {
-                sb.append("1");
-            } else {
-                sb.append("0");
-            }
+            sb.append(video[x][y]);
 
             return;
         }
