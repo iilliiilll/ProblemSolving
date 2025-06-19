@@ -23,42 +23,44 @@ class Main {
             st = new StringTokenizer(br.readLine());
 
             for (int j = 0; j < n; j++) {
-                if (Integer.parseInt(st.nextToken()) == 1) {
-                    paper[i][j] = true;
-                    blue += 1;
-                } else {
-                    paper[i][j] = false;
-                    white += 1;
-                }
+                paper[i][j] = Integer.parseInt(st.nextToken()) == 1;
             }
         }
 
-        // 정사각형 크기 구하기
-        for (int size = 2; size <= n; size *= 2) {
-            for (int i = 0; i < n; i += size) {
-                for (int j = 0; j < n; j += size) {
-                    isSquare(size, i, j);
-                }
-            }
-        }
+        divide(0, 0, n);
 
         System.out.println(white);
         System.out.println(blue);
     }
 
-    public static void isSquare(int size, int i, int j) {
-        for (int row = i; row < i + size; row++) {
-            for (int col = j; col < j + size; col++) {
-                if (paper[i][j] != paper[row][col]) {
-                    return;
+    public static void divide(int x, int y, int size) {
+        if (isSameColor(x, y, size)) {
+            if (paper[x][y]) {
+                blue++;
+            } else {
+                white++;
+            }
+
+            return;
+        }
+
+        int newSize = size / 2;
+
+        divide(x, y, newSize);
+        divide(x, y + newSize, newSize);
+        divide(x + newSize, y, newSize);
+        divide(x + newSize, y + newSize, newSize);
+    }
+
+    public static boolean isSameColor(int x, int y, int size) {
+        for (int i = x; i < x + size; i++) {
+            for (int j = y; j < y + size; j++) {
+                if (paper[i][j] != paper[x][y]) {
+                    return false;
                 }
             }
         }
 
-        if (paper[i][j]) { // 파란색 (true)
-            blue -= 3;
-        } else { // 하얀색 (false)
-            white -= 3;
-        }
+        return true;
     }
 }
