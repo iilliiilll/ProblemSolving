@@ -3,17 +3,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// StringBuilder 속도 비교
-
 class Main {
 
     static int[][] a;
     static int[][] b;
-    static int[][] c;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
         // n, m, k <= 100, |원소| <= 100
         // 행렬 A
@@ -40,21 +38,15 @@ class Main {
             }
         }
 
-        // 행렬 C
-        c = new int[n][k];
-
+        // 행렬곱 계산
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < k; j++) {
-                c[i][j] = cal(i, j, m);
+                sb.append(cal(i, j, m)).append(" ");
             }
+            sb.append('\n');
         }
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < k; j++) {
-                System.out.print(c[i][j] + " ");
-            }
-            System.out.println();
-        }
+        System.out.println(sb);
     }
 
     public static int cal(int row, int col, int size) {
