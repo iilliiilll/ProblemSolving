@@ -10,6 +10,7 @@ class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
         // 2 <= n <= 5, 1 <= b <= 100,000,000,000
         st = new StringTokenizer(br.readLine());
@@ -30,10 +31,12 @@ class Main {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                System.out.print(result[i][j] + " ");
+                sb.append(result[i][j]).append(" ");
             }
-            System.out.println();
+            sb.append('\n');
         }
+
+        System.out.println(sb);
 
     }
 
