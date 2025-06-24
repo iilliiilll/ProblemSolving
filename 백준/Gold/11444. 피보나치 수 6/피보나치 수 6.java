@@ -5,6 +5,10 @@ import java.io.InputStreamReader;
 class Main {
 
     static int F = 1_000_000_007;
+    static int[][] matrix = {
+        {1, 1},
+        {1, 0},
+    };
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,14 +21,7 @@ class Main {
             return;
         }
 
-        int[][] matrix = {
-            {1, 1},
-            {1, 0},
-        };
-
-        int[][] result = pow(matrix, n - 1);
-
-        System.out.println(result[0][0] % F);
+        System.out.println(pow(matrix, n - 1)[0][0]);
     }
 
     public static int[][] pow(int[][] a, long n) {
@@ -33,13 +30,13 @@ class Main {
         }
 
         int[][] temp = pow(a, n / 2);
-        int[][] m = mul(temp, temp);
+        temp = mul(temp, temp);
 
         if (n % 2 == 1) {
-            m = mul(m, a);
+            temp = mul(temp, a);
         }
 
-        return m;
+        return temp;
     }
 
     public static int[][] mul(int[][] a, int[][] b) {
@@ -47,21 +44,17 @@ class Main {
 
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 2; j++) {
-                c[i][j] += cal(i, j, a, b);
+                long temp = 0;
+
+                for (int k = 0; k < 2; k++) {
+                    temp = (temp + (long) a[i][k] * b[k][j]) % F;
+                }
+
+                c[i][j] = (int) temp;
             }
         }
 
         return c;
-    }
-
-    public static int cal(int row, int col, int[][] a, int[][] b) {
-        long temp = 0;
-
-        for (int i = 0; i < 2; i++) {
-            temp = (temp + (long) a[row][i] * b[i][col]) % F;
-        }
-
-        return (int) (temp % F);
     }
 
 }
