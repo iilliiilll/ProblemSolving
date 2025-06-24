@@ -43,8 +43,6 @@ class Main {
     public static int[][] pow(int[][] a, long b) {
         if (b == 1) {
             return a;
-        } else if (b == 2) {
-            return multiply(a, a);
         }
 
         int[][] temp = pow(a, b / 2);
