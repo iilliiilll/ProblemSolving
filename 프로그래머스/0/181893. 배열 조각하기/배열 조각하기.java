@@ -2,20 +2,17 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] arr, int[] query) {
-        List<Integer> list = new ArrayList<>();
-        
-        for(int i : arr) {
-            list.add(i);
-        }
+        int start = 0;
+        int end = arr.length - 1;
         
         for(int i = 0; i < query.length; i++) {
             if(i % 2 == 0) {
-                list.subList(query[i] + 1, list.size()).clear();
+                end = start + query[i];
             } else {
-                list.subList(0, query[i]).clear();
+                start += query[i];
             }
         }
         
-        return list.stream().mapToInt(i -> i).toArray();
+        return Arrays.copyOfRange(arr, start, end + 1);
     }
 }
