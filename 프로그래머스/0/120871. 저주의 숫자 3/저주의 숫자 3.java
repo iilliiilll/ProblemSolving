@@ -1,18 +1,15 @@
+
 class Solution {
     public int solution(int n) {
-        int[] arr = new int[101];
-        
-        int idx = 1;
-        int num = 1;
-        
-        while(idx != 101) {
-            if((num % 3 == 0) || ("" + num).contains("3")) {
-                num++;
-            } else {
-                arr[idx++] = num++;
+        int answer = 0;
+
+        for (int i = 1; i <= n; i++) {
+            answer++;
+            if (answer % 3 == 0 || String.valueOf(answer).contains("3")) {
+                i--;
             }
         }
-        
-        return arr[n];
+
+        return answer;
     }
 }
