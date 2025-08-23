@@ -1,38 +1,28 @@
 class Solution {
+    static int[][] dots;
+    
     public int solution(int[][] dots) {
-        // case 1 : 01 23
-        int[] x = get(dots[0], dots[1]);
-        int[] y = get(dots[2], dots[3]);
+        Solution.dots = dots;
         
-        if(x[0] * y[1] == x[1] * y[0]) {
+        if(get(0, 1, 2, 3)) {
             return 1;
         }
         
-        // case 2 : 02 13
-        x = get(dots[0], dots[2]);
-        y = get(dots[1], dots[3]);
-        
-        if(x[0] * y[1] == x[1] * y[0]) {
+        if(get(0, 2, 1, 3)) {
             return 1;
         }
         
-        // case 3 : 03 12
-        x = get(dots[0], dots[3]);
-        y = get(dots[1], dots[2]);
-        
-        if(x[0] * y[1] == x[1] * y[0]) {
+        if(get(0, 3, 1, 2)) {
             return 1;
         }
-        
+
         return 0;
     }
     
-    private int[] get(int[] a, int[] b) {
-        int[] arr = new int[2];
+    private boolean get(int a, int b, int c, int d) {
+        int x = (dots[b][1] - dots[a][1]) * (dots[d][0] - dots[c][0]);
+        int y = (dots[b][0] - dots[a][0]) * (dots[d][1] - dots[c][1]);
         
-        arr[0] = b[0] - a[0];
-        arr[1] = b[1] - a[1];
-        
-        return arr;
+        return x == y || x == -y;
     }
 }
