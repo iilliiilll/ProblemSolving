@@ -1,21 +1,14 @@
+import java.util.*;
+
 class Solution {
     public int solution(String my_string) {
         int answer = 0;
-        String temp = "";
         
-        for(int i = 0; i < my_string.length(); i++) {
-            char ch = my_string.charAt(i);
-            
-            if('0' <= ch && ch <= '9') {
-                temp += String.valueOf(ch);
-            } else if(!temp.isEmpty()) {
-                answer += Integer.parseInt(temp);
-                temp = "";
-            }
-        }
+        String str = my_string.replaceAll("[a-zA-Z]", " ");
+        StringTokenizer st = new StringTokenizer(str);
         
-        if(!temp.isEmpty()) {
-            answer += Integer.parseInt(temp);
+        while(st.hasMoreTokens()) {
+            answer += Integer.parseInt(st.nextToken());
         }
         
         return answer;
