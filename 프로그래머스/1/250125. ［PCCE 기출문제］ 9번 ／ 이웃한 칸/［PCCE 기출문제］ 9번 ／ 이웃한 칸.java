@@ -4,28 +4,20 @@ class Solution {
         
         String color = board[h][w];
         
-        if(h > 0) {
-            if(color.equals(board[h - 1][w])) {
-                answer++;
-            }
+        if(h > 0 && color.equals(board[h - 1][w])) {
+            answer++;
         }
         
-        if(w > 0) {
-            if(color.equals(board[h][w - 1])) {
-                answer++;
-            }
+        if(w > 0 && color.equals(board[h][w - 1])) {
+            answer++;
         }
         
-        if(h < board.length - 1) {
-            if(color.equals(board[h + 1][w])) {
-                answer++;
-            }
+        if(h < board.length - 1 && color.equals(board[h + 1][w])) {
+            answer++;
         } 
         
-        if(w < board.length - 1) {
-            if(color.equals(board[h][w + 1])) {
-                answer++;
-            }
+        if(w < board.length - 1 && color.equals(board[h][w + 1])) {
+            answer++;
         }
         
         return answer;
