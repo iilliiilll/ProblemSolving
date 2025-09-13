@@ -61,7 +61,6 @@ class Solution {
                     if(b[y][x + i]) {
                         flag = false;
                         break;
-                    } else {
                     }
                 }
                 
