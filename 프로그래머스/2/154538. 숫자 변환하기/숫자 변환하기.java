@@ -3,46 +3,28 @@ import java.util.*;
 class Solution {
     public int solution(int x, int y, int n) {
         // dp용 배열
-        int[] arr = new int[1_000_001];
-        Arrays.fill(arr, -1);
-        arr[x] = 0;
+        int[] dp = new int[y + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[x] = 0;
         
         for(int i = x; i <= y; i++) {
-            if(i == x) {
-                arr[i] = 0;
-            } else if(i - n >= x && arr[i - n] != -1) {
-                int num = getMin(arr, i);
-                
-                if(num == -1) {
-                    arr[i] = 1 + arr[i - n];
-                } else {
-                    arr[i] = 1 + Math.min(arr[i - n], num);
-                }
-            } else {
-                int num = getMin(arr, i);
-                
-                if(num == -1) {
-                    arr[i] = -1;
-                } else {
-                    arr[i] = 1 + num;
-                }
+            if(dp[i] == Integer.MAX_VALUE) {
+                continue;
+            }
+            
+            if(i + n <= y) {
+                dp[i + n] = Math.min(dp[i + n], dp[i] + 1);
+            }
+            
+            if(i * 2 <= y) {
+                dp[i * 2] = Math.min(dp[i * 2], dp[i] + 1);
+            }
+            
+            if(i * 3 <= y) {
+                dp[i * 3] = Math.min(dp[i * 3], dp[i] + 1);
             }
         }
         
-        return arr[y];
-    }
-    
-    private static int getMin(int[] arr, int i) {
-        if(i % 2 == 0 && arr[i / 2] != -1 && i % 3 == 0 && arr[i / 3] != -1) {
-            return Math.min(arr[i / 2], arr[i / 3]);
-        } else if(i % 2 == 0 && arr[i / 2] != -1) {
-            return arr[i / 2];
-        } else if(i % 3 == 0 && arr[i / 3] != -1) {
-            return arr[i / 3];
-        } else {
-            return -1;
-        }
-        
-        
+        return dp[y] == Integer.MAX_VALUE ? -1 : dp[y];
     }
 }
