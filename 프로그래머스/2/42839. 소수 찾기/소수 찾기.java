@@ -30,7 +30,7 @@ class Solution {
         for(int i = 0; i < arr.length; i++) {
             if(!visited[i]) {
                 visited[i] = true;
-                dfs(arr, visited, number + String.valueOf(arr[i]));
+                dfs(arr, visited, number + arr[i]);
                 visited[i] = false;
             }
         }
