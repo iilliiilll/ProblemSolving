@@ -6,7 +6,7 @@ class Solution {
         int a = arrayA[0];
         int b = arrayB[0];
         
-        for(int i = 0; i < arrayA.length; i++) {
+        for(int i = 1; i < arrayA.length; i++) {
             a = gcd(a, arrayA[i]);
             b = gcd(b, arrayB[i]);
         }
