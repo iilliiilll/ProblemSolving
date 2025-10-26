@@ -10,10 +10,8 @@ class Solution {
         
         for(int i = 0; i < 24; i++) {
             // 서버 반납
-            if(!q.isEmpty()) {
-                if(q.peek()[1] == i) {
-                    current -= q.poll()[0];
-                }
+            if(!q.isEmpty() && q.peek()[1] == i) {
+                current -= q.poll()[0];
             }
             
             // 서버를 증설해야 되면
