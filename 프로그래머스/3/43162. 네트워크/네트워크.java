@@ -1,65 +1,15 @@
-// import java.util.*;
-
-// class Solution {
-//     public int solution(int n, int[][] computers) {
-//         // 컴퓨터 n개 공간 만들기
-//         List<List<Integer>> list = new ArrayList<>();
-//         for(int i = 0; i < n; i++) list.add(new ArrayList<>());
-        
-//         // 컴퓨터 n개 넣기
-//         for(int i = 0; i < n; i++) {
-//             for(int j = 0; j < n; j++) {
-//                 if(i != j && computers[i][j] == 1) {
-//                     list.get(i).add(j);
-//                     list.get(j).add(i);
-//                 }
-//             }
-//         }
-        
-//         // bfs
-//         boolean[] visited = new boolean[n];
-        
-//         int answer = 0;
-        
-//         for(int i = 0; i < n; i++) {
-//             if(!visited[i]) {
-//                 bfs(visited, list, i);
-//                 answer++;
-//             }
-//         }
-        
-//         return answer;
-//     }
-    
-//     private static void bfs(boolean[] visited, List<List<Integer>> list, int net) {
-//         Queue<Integer> q = new LinkedList<>();
-//         q.add(net);
-//         visited[net] = true;
-        
-//         while(!q.isEmpty()) {
-//             int num = q.poll();
-            
-//             for(int temp : list.get(num)) {
-//                 if(!visited[temp]) {
-//                     visited[temp] = true;
-//                     q.add(temp);
-//                 }
-//             }
-//         }
-//     }
-// }
-
 import java.util.*;
 
 class Solution {
     public int solution(int n, int[][] computers) {
-        int answer = 0;
-        
+        // bfs
         boolean[] visited = new boolean[n];
+        
+        int answer = 0;
         
         for(int i = 0; i < n; i++) {
             if(!visited[i]) {
-                dfs(i, n, visited, computers);
+                bfs(visited, n, i, computers);
                 answer++;
             }
         }
@@ -67,13 +17,49 @@ class Solution {
         return answer;
     }
     
-    private static void dfs(int cur, int n, boolean[] visited, int[][] computers) {
-        visited[cur] = true;
+    private static void bfs(boolean[] visited, int n, int net, int[][] computers) {
+        Queue<Integer> q = new LinkedList<>();
+        q.add(net);
+        visited[net] = true;
         
-        for(int i = 0; i < n; i++) {
-            if(!visited[i] && computers[cur][i] == 1) {
-                dfs(i, n, visited, computers);
+        while(!q.isEmpty()) {
+            int num = q.poll();
+            
+            for(int i = 0; i < n; i++) {
+                if(!visited[i] && computers[num][i] == 1) {
+                    visited[i] = true;
+                    q.add(i);
+                }
             }
         }
     }
 }
+
+// import java.util.*;
+
+// class Solution {
+//     public int solution(int n, int[][] computers) {
+//         int answer = 0;
+        
+//         boolean[] visited = new boolean[n];
+        
+//         for(int i = 0; i < n; i++) {
+//             if(!visited[i]) {
+//                 dfs(i, n, visited, computers);
+//                 answer++;
+//             }
+//         }
+        
+//         return answer;
+//     }
+    
+//     private static void dfs(int cur, int n, boolean[] visited, int[][] computers) {
+//         visited[cur] = true;
+        
+//         for(int i = 0; i < n; i++) {
+//             if(!visited[i] && computers[cur][i] == 1) {
+//                 dfs(i, n, visited, computers);
+//             }
+//         }
+//     }
+// }
