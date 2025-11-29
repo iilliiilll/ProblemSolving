@@ -34,13 +34,16 @@ class Solution {
     private static void bfs(boolean[] visited, List<List<Integer>> list, int net) {
         Queue<Integer> q = new LinkedList<>();
         q.add(net);
+        visited[net] = true;
         
         while(!q.isEmpty()) {
             int num = q.poll();
-            visited[num] = true;
             
             for(int temp : list.get(num)) {
-                if(!visited[temp]) q.add(temp);
+                if(!visited[temp]) {
+                    visited[temp] = true;
+                    q.add(temp);
+                }
             }
         }
     }
