@@ -37,7 +37,7 @@ class Solution {
     
     static boolean canInstall(int x, int y, int struct) {
         if (struct == 0) { // 기둥
-            return y == 0 || (y > 0 && pillar[x][y - 1]) || beam[x][y]|| (x > 0 && beam[x - 1][y]);
+            return y == 0 || (y > 0 && pillar[x][y - 1]) || beam[x][y] || (x > 0 && beam[x - 1][y]);
         } else { // 보
             return (y > 0 && pillar[x][y - 1]) || (y > 0 && x + 1 <= N && pillar[x + 1][y - 1]) || (x > 0 && x + 1 <= N && beam[x - 1][y] && beam[x + 1][y]);
         }
