@@ -20,18 +20,11 @@ class Solution {
                 count++;
             }
         }
+        
+        // 0 바로 뒤에 추가. 없으면 맨 앞.
+        int idx = sb.lastIndexOf("0");
+        sb.insert(idx + 1, "110".repeat(count));
 
-        before = sb.toString();
-        String addStr = "110".repeat(count);
-        
-        // 110 삽입 (마지막 0 뒤)
-        if (before.contains("0")) {
-            int idx = before.lastIndexOf("0");
-            before = before.substring(0, idx + 1) + addStr + before.substring(idx + 1, before.length());
-        } else {
-            before = addStr + before;
-        }
-        
-        return before;
+        return sb.toString();
     }
 }
