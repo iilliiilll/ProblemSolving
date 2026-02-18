@@ -1,5 +1,10 @@
 /*
 union-find
+1. parent, value 배열 생성
+2. UPDATE 1: 루트 찾아서 값 변경
+3. UPDATE 2: 순회하면서 from->to 변경
+3. MERGE: 루트가 r2인 좌표를 모두 r1으로 변경. r1, r2 값 중 선택. r2 값은 null. 
+4. UNMERGE: 인덱스, 루트, 값 저장. 부모가 루트는 모두 null 변환. 인덱스에 값 저장. 
 */
 
 import java.util.*;
